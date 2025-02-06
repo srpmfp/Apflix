@@ -1,0 +1,35 @@
+{
+  "name": "appflix-client",
+  "version": "1.0.0",
+  "description": "movie search api front end",
+  "scripts": {
+    "test": "dev",
+    "start": "parcel src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srpmfp/appflix-client.git"
+  },
+  "author": "Sean Peters",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srpmfp/appflix-client/issues"
+  },
+  "homepage": "https://github.com/srpmfp/appflix-client#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.47",
+    "prop-types": "^15.8.1",
+    "react": "^19.0.0",
+    "react-bootstrap": "^2.10.7",
+    "react-dom": "^19.0.0",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.13.3",
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  }
+}

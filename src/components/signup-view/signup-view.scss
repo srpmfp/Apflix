@@ -1,0 +1,17 @@
+:root{
+    --primary-color: linearGradient(#0D1821, #437ead);
+    --secondary-color:linearGradient(#87255B,#3d1129);
+    --tertiary-color:linearGradient(#CD8B76,#5b3c33);
+    --tertiary-transparent: rgba(205, 139, 118, 0.3 );
+
+    --tertiary-transparent: rgba(205, 139, 118, 0.3 );
+    --secondary-transparent: rgba(135, 37, 91, 0.3 );
+}
+
+.signupForm{
+    background: var(--secondary-color);
+    border-radius: 10px;
+    width: 100%;
+    padding:0;
+    margin:0;
+}

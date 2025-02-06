@@ -1,0 +1,15 @@
+:root{
+    --primary-color: #0D1821;
+    --secondary-color:#87255B;
+    --tertiary-color:#CD8B76;
+    --tertiary-transparent: rgba(205, 139, 118, 0.3 );
+    --secondary-transparent: rgba(135, 37, 91, 0.3 );
+}
+
+.movieViewCard{
+    background-color:var(--tertiary-transparent)
+
+}
+.movieViewList{
+    background-color:var(--tertiary-color)
+}
