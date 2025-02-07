@@ -139,7 +139,7 @@ export const MainView = () => {
                       }}></input>
                     <Row className='d-flex w-100 flex-row flex-basis align-items-center justify-content-center'>
                       <Button
-                        className='col-sm-2 m-1'
+                        className='col-sm-2 m-1 btn-secondary'
                         onClick={() => {
                           if (buttonToggle) {
                             setGenre('Anime');
@@ -153,7 +153,7 @@ export const MainView = () => {
                         Anime
                       </Button>
                       <Button
-                        className='col-sm-2 m-1'
+                        className='col-sm-2 m-1 btn-secondary'
                         onClick={() => {
                           if (buttonToggle) {
                             setGenre('Comedy');
@@ -167,7 +167,7 @@ export const MainView = () => {
                         Comedy
                       </Button>
                       <Button
-                        className='col-sm-2 m-1'
+                        className='col-sm-2 m-1 btn-secondary'
                         onClick={() => {
                           if (buttonToggle) {
                             setGenre('Drama');
@@ -181,7 +181,7 @@ export const MainView = () => {
                         Drama
                       </Button>
                       <Button
-                        className='col-sm-2 m-1'
+                        className='col-sm-2 m-1 btn-secondary'
                         onClick={() => {
                           if (buttonToggle) {
                             setGenre('Period');

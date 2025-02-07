@@ -5,13 +5,13 @@ import './nav-bar.scss';
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
     <Navbar
-      bg='light'
+      className='nBar'
       expand='lg'>
       <Container>
         <Navbar.Brand
           as={Link}
           to='/'>
-          MyFlix
+          Apflix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>

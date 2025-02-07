@@ -1,0 +1,11 @@
+:root{
+    --primary-color: linear-gradient(#0D1821, #437ead);
+    --secondary-color:linear-gradient(#87255B,#3d1129);
+    --tertiary-color:linear-gradient(#CD8B76,#5b3c33);
+    --tertiary-transparent: rgba(205, 139, 118, 0.3 );
+}
+
+.nBar{
+    background-image: var(--tertiary-color);
+    border-radius: 10px;
+}

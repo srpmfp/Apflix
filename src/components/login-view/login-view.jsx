@@ -84,10 +84,9 @@ export const LoginView = ({ onLoggedIn }) => {
               </Form>
             </Card>
           </Col>
-          <Col className='col-3 w-100 d-flex bg-dark signup-btn-container'>
+          <Col className='col-3 w-100 d-flex signup-btn-container'>
             <Button
-              className='signup-btn'
-              variant='dark'
+              className='btn btn-secondary'
               onClick={(viewSignUp) => {
                 setSignup(viewSignUp);
               }}>

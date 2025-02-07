@@ -1,27 +1,33 @@
-:root{
-    --primary-color: #0D1821;
-    --secondary-color:#87255B;
-    --tertiary-color:#CD8B76;
-    --tertiary-transparent: rgba(205, 139, 118, 0.3 );
-    --secondary-transparent: rgba(135, 37, 91, 0.3 );
+:root {
+    --primary-color: linear-gradient(#0D1821, #437ead);
+    --secondary-color: linear-gradient(#87255B, #3d1129);
+    --tertiary-color: linear-gradient(#CD8B76, #5b3c33);
+    --tertiary-transparent: rgba(205, 138, 118, 0.653);
 }
 
-.login-card{
+.login-card {
     background: var(--tertiary-color);
-    
+
 }
-.login-Label{
+
+.login-Label {
     background-color: var(--tertiary-color);
     border-radius: 10px 10px 0 0
-    
 }
-.signup-btn{
-    transition: background-color 0.3s; 
+
+.signup-btn {
+    transition-property: hover ;
+    transition:  0.6s ease-in-out;
+
 }
-.signup-btn:hover{
-    background-color: var(--secondary-color);
-    color: var(--tertiary-color);
+
+.signup-btn:hover {
+
+    background-image: var(--tertiary-color);
+
+
 }
+
 .signup-btn-container {
     display: flex;
     justify-content: flex-end; // Aligns the button to the right

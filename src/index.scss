@@ -1,15 +1,17 @@
 
-
-:root {
-  --primary-color: #0D1821;
-  --secondary-color: #87255B;
-  --tertiary-color: #CD8B76;
-  --tertiary-transparent: rgba(205, 139, 118, 0.3);
+:root{
+    --primary-color: linear-gradient(#0D1821, #437ead);
+    --secondary-color:linear-gradient(#87255B,#3d1129);
+    --tertiary-color:linear-gradient(#CD8B76,#5b3c33);
+    --tertiary-transparent: rgba(205, 139, 118, 0.3 );
 }
-
+*{
+    font-family: 'Oswald', sans-serif;
+    font-stretch: expanded;
+}
 .indexCont{
   
-  background:black;
+  background: var(--primary-color);
   height:100vh;
   scrollbar-width: none;
    
