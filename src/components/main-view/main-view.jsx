@@ -4,7 +4,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { NavigationBar } from '../nav-bar/nav-bar';
 import { ProfileView } from '../profile-view/profile-view';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row, Button } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import './main-view.scss';
@@ -17,6 +17,9 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
   //Movie information
   const [movies, setMovies] = useState([]);
+  const [mSearch, setMSearch] = useState('');
+  const [genre, setGenre] = useState('');
+  const [buttonToggle, setButtonToggle] = useState(false);
 
   // return movie info from the database GET REQ
   useEffect(() => {
@@ -42,6 +45,14 @@ export const MainView = () => {
       });
   }, [token]);
 
+  const filteredMovies = movies.filter((movie) => {
+    if (genre === '') {
+      return movie.title.toLowerCase().includes(mSearch.toLowerCase());
+    }
+    if (genre !== '') {
+      return movie.genre === genre && movie.title.toLowerCase().includes(mSearch.toLowerCase());
+    }
+  });
   return (
     <BrowserRouter>
       <NavigationBar
@@ -113,18 +124,90 @@ export const MainView = () => {
                 ) : movies.length === 0 ? (
                   <div className='main-view'>The list is empty!</div>
                 ) : (
-                  <Col
-                    className='h-100 w-50 d-flex flex-row flex-{grow|shrink}-1 flex-wrap overflow-auto 
+                  <Row className='d-flex w-100 flex-column align-items-center justify-content-center'>
+                    <div className='col-6 text-light '>Search Movie</div>
+                    <input
+                      className='search-bar'
+                      label='MovieSearch'
+                      type='text'
+                      onChange={(e) => {
+                        if (mSearch !== '') {
+                          setMSearch(e.target.value);
+                        } else {
+                          setMSearch('  ');
+                        }
+                      }}></input>
+                    <Row className='d-flex w-100 flex-row flex-basis align-items-center justify-content-center'>
+                      <Button
+                        className='col-sm-2 m-1'
+                        onClick={() => {
+                          if (buttonToggle) {
+                            setGenre('Anime');
+                            setButtonToggle(!buttonToggle);
+                          }
+                          if (!buttonToggle) {
+                            setGenre('');
+                            setButtonToggle(!buttonToggle);
+                          }
+                        }}>
+                        Anime
+                      </Button>
+                      <Button
+                        className='col-sm-2 m-1'
+                        onClick={() => {
+                          if (buttonToggle) {
+                            setGenre('Comedy');
+                            setButtonToggle(!buttonToggle);
+                          }
+                          if (!buttonToggle) {
+                            setGenre('');
+                            setButtonToggle(!buttonToggle);
+                          }
+                        }}>
+                        Comedy
+                      </Button>
+                      <Button
+                        className='col-sm-2 m-1'
+                        onClick={() => {
+                          if (buttonToggle) {
+                            setGenre('Drama');
+                            setButtonToggle(!buttonToggle);
+                          }
+                          if (!buttonToggle) {
+                            setGenre('');
+                            setButtonToggle(!buttonToggle);
+                          }
+                        }}>
+                        Drama
+                      </Button>
+                      <Button
+                        className='col-sm-2 m-1'
+                        onClick={() => {
+                          if (buttonToggle) {
+                            setGenre('Period');
+                            setButtonToggle(!buttonToggle);
+                          }
+                          if (!buttonToggle) {
+                            setGenre('');
+                            setButtonToggle(!buttonToggle);
+                          }
+                        }}>
+                        Period
+                      </Button>
+                    </Row>
+                    <Col
+                      className='h-100 w-50 d-flex flex-row flex-{grow|shrink}-1 flex-wrap overflow-auto 
           align-self-center justify-content-center'>
-                    {movies.map((movie) => (
-                      <MovieCard
-                        movie={movie}
-                        key={movie.id}
-                        user={user}
-                        token={token}
-                      />
-                    ))}
-                  </Col>
+                      {filteredMovies.map((movie) => (
+                        <MovieCard
+                          movie={movie}
+                          key={movie.id}
+                          user={user}
+                          token={token}
+                        />
+                      ))}
+                    </Col>
+                  </Row>
                 )}
               </>
             }

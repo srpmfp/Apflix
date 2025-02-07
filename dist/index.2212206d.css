@@ -13299,6 +13299,64 @@ textarea.form-control-lg {
   }
 }
 
+.signupForm {
+  background: var(--secondary-color);
+  border-radius: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-card {
+  background: var(--tertiary-color);
+}
+
+.login-Label {
+  background-color: var(--tertiary-color);
+  border-radius: 10px 10px 0 0;
+}
+
+.signup-btn {
+  transition: background-color .3s;
+}
+
+.signup-btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+}
+
+.signup-btn-container {
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+* {
+  font-family: Oswald, sans-serif;
+  font-stretch: expanded;
+}
+
+.searchLabel {
+  margin: 0 auto;
+}
+
+.search-bar {
+  justify-self: center;
+  align-items: center;
+  width: 50%;
+  height: 3rem;
+}
+
+.movieCardCont {
+  background: var(--secondary-color);
+  scrollbar-width: none;
+  flex-direction: column;
+  margin-top: 1%;
+  font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
+  display: flex;
+}
+
 :root {
   --primary-color: #0d1821;
   --secondary-color: #87255b;
@@ -13351,53 +13409,6 @@ textarea.form-control-lg {
 
 .m-cont {
   border-radius: 10px;
-}
-
-.signupForm {
-  background: var(--secondary-color);
-  border-radius: 10px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.login-card {
-  background: var(--tertiary-color);
-}
-
-.login-Label {
-  background-color: var(--tertiary-color);
-  border-radius: 10px 10px 0 0;
-}
-
-.signup-btn {
-  transition: background-color .3s;
-}
-
-.signup-btn:hover {
-  background-color: var(--secondary-color);
-  color: var(--tertiary-color);
-}
-
-.signup-btn-container {
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  display: flex;
-}
-
-* {
-  font-family: Oswald, sans-serif;
-  font-stretch: expanded;
-}
-
-.movieCardCont {
-  background: var(--secondary-color);
-  scrollbar-width: none;
-  flex-direction: column;
-  margin-top: 1%;
-  font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
-  display: flex;
 }
 
 :root {
