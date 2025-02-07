@@ -5,7 +5,6 @@ import { Modal, Col } from 'react-bootstrap';
 import moment from 'moment-timezone';
 
 import { Card, Button } from 'react-bootstrap';
-import { propTypes } from 'react-bootstrap/esm/Image';
 import PropTypes from 'prop-types';
 
 export const ProfileView = ({ user, movie, token, setUser, onLoggedOut }) => {

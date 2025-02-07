@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Card, Row, Button, Col } from 'react-bootstrap';
 import { Stack } from 'react-bootstrap';
+import moment from 'moment-timezone';
 import './signup-view.scss';
 
 export const SignupView = ({ returnBtn }) => {
@@ -62,11 +63,15 @@ export const SignupView = ({ returnBtn }) => {
             </Form.Group>
 
             <Form.Group controlId='formBirthday'>
-              <Form.Label>birthday (yyyy-mm-dd) :</Form.Label>
+              <Form.Label>birthday :</Form.Label>
               <Form.Control
-                type='text'
+                type='date'
                 value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
+                onChange={(e) => {
+                  const timeZone = moment.tz.guess();
+                  const formatDate = moment(e.target.value).tz(timeZone).format('YYYY-MM-DD');
+                  setBirthday(formatDate);
+                }}
                 required
                 minLength='3'
               />
