@@ -18784,7 +18784,7 @@ const MainView = ()=>{
                                             className: "d-flex w-100 flex-row flex-basis align-items-center justify-content-center",
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                                    className: "col-sm-2 m-1",
+                                                    className: "col-sm-2 m-1 btn-secondary",
                                                     onClick: ()=>{
                                                         if (buttonToggle) {
                                                             setGenre('Anime');
@@ -18802,7 +18802,7 @@ const MainView = ()=>{
                                                     columnNumber: 23
                                                 }, void 0),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                                    className: "col-sm-2 m-1",
+                                                    className: "col-sm-2 m-1 btn-secondary",
                                                     onClick: ()=>{
                                                         if (buttonToggle) {
                                                             setGenre('Comedy');
@@ -18820,7 +18820,7 @@ const MainView = ()=>{
                                                     columnNumber: 23
                                                 }, void 0),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                                    className: "col-sm-2 m-1",
+                                                    className: "col-sm-2 m-1 btn-secondary",
                                                     onClick: ()=>{
                                                         if (buttonToggle) {
                                                             setGenre('Drama');
@@ -18838,7 +18838,7 @@ const MainView = ()=>{
                                                     columnNumber: 23
                                                 }, void 0),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                                    className: "col-sm-2 m-1",
+                                                    className: "col-sm-2 m-1 btn-secondary",
                                                     onClick: ()=>{
                                                         if (buttonToggle) {
                                                             setGenre('Period');
@@ -19117,10 +19117,9 @@ const LoginView = ({ onLoggedIn })=>{
                     columnNumber: 11
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                    className: "col-3 w-100 d-flex bg-dark signup-btn-container",
+                    className: "col-3 w-100 d-flex signup-btn-container",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                        className: "signup-btn",
-                        variant: "dark",
+                        className: "btn btn-secondary",
                         onClick: (viewSignUp)=>{
                             setSignup(viewSignUp);
                         },
@@ -19148,12 +19147,12 @@ const LoginView = ({ onLoggedIn })=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 100,
+                lineNumber: 99,
                 columnNumber: 11
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 99,
+            lineNumber: 98,
             columnNumber: 9
         }, undefined)
     }, void 0, false, {
@@ -32771,14 +32770,14 @@ var _reactRouterDom = require("react-router-dom");
 var _navBarScss = require("./nav-bar.scss");
 const NavigationBar = ({ user, onLoggedOut })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
-        bg: "light",
+        className: "nBar",
         expand: "lg",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {
                     as: (0, _reactRouterDom.Link),
                     to: "/",
-                    children: "MyFlix"
+                    children: "Apflix"
                 }, void 0, false, {
                     fileName: "src/components/nav-bar/nav-bar.jsx",
                     lineNumber: 11,
