@@ -22,28 +22,45 @@ export const MainView = () => {
   const [buttonToggle, setButtonToggle] = useState(false);
 
   // return movie info from the database GET REQ
+
   useEffect(() => {
-    fetch('https://appflixcf-d4726ef19667.herokuapp.com/movies', {
-      headers: { Authorization: `bearer ${token}` },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const movieData = data.map((movie) => {
-          return {
-            id: movie._id,
-            title: movie.title,
-            genre: movie.genre,
-            director: {
-              name: movie.director.name,
-              bio: movie.director.bio,
-              birthday: movie.director.birthday,
-            },
-            image: movie.image,
-          };
+    if (!token && !user) {
+      return;
+    } else {
+      fetch('https://appflixcf-d4726ef19667.herokuapp.com/movies', {
+        headers: { Authorization: `bearer ${token}` },
+      })
+        .then((response) => {
+          if (response.status === 401) {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+            throw new Error('Unauthorized');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const movieData = data.map((movie) => {
+            return {
+              id: movie._id,
+              title: movie.title,
+              genre: movie.genre,
+              description: movie.description,
+              director: {
+                name: movie.director.name,
+                bio: movie.director.bio,
+                birthday: movie.director.birthday,
+              },
+              image: movie.image,
+            };
+          });
+          setMovies(movieData);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
         });
-        setMovies(movieData);
-      });
-  }, [token]);
+    }
+  }, [token, user]);
 
   const filteredMovies = movies.filter((movie) => {
     if (genre === '') {
@@ -53,6 +70,7 @@ export const MainView = () => {
       return movie.genre === genre && movie.title.toLowerCase().includes(mSearch.toLowerCase());
     }
   });
+
   return (
     <BrowserRouter>
       <NavigationBar
@@ -141,12 +159,12 @@ export const MainView = () => {
                       <Button
                         className='col-sm-2 m-1 btn-secondary'
                         onClick={() => {
-                          if (buttonToggle) {
-                            setGenre('Anime');
+                          if (genre === 'Anime') {
+                            setGenre('');
                             setButtonToggle(!buttonToggle);
                           }
-                          if (!buttonToggle) {
-                            setGenre('');
+                          if (genre !== 'Anime') {
+                            setGenre('Anime');
                             setButtonToggle(!buttonToggle);
                           }
                         }}>
@@ -155,12 +173,12 @@ export const MainView = () => {
                       <Button
                         className='col-sm-2 m-1 btn-secondary'
                         onClick={() => {
-                          if (buttonToggle) {
-                            setGenre('Comedy');
+                          if (genre === 'Comedy') {
+                            setGenre('');
                             setButtonToggle(!buttonToggle);
                           }
-                          if (!buttonToggle) {
-                            setGenre('');
+                          if (genre !== 'Comedy') {
+                            setGenre('Comedy');
                             setButtonToggle(!buttonToggle);
                           }
                         }}>
@@ -169,12 +187,12 @@ export const MainView = () => {
                       <Button
                         className='col-sm-2 m-1 btn-secondary'
                         onClick={() => {
-                          if (buttonToggle) {
-                            setGenre('Drama');
+                          if (genre === 'Drama') {
+                            setGenre('');
                             setButtonToggle(!buttonToggle);
                           }
-                          if (!buttonToggle) {
-                            setGenre('');
+                          if (genre !== 'Drama') {
+                            setGenre('Drama');
                             setButtonToggle(!buttonToggle);
                           }
                         }}>
@@ -183,12 +201,12 @@ export const MainView = () => {
                       <Button
                         className='col-sm-2 m-1 btn-secondary'
                         onClick={() => {
-                          if (buttonToggle) {
-                            setGenre('Period');
+                          if (genre === 'Period') {
+                            setGenre('');
                             setButtonToggle(!buttonToggle);
                           }
-                          if (!buttonToggle) {
-                            setGenre('');
+                          if (genre !== 'Period') {
+                            setGenre('Period');
                             setButtonToggle(!buttonToggle);
                           }
                         }}>
@@ -200,10 +218,12 @@ export const MainView = () => {
           align-self-center justify-content-center'>
                       {filteredMovies.map((movie) => (
                         <MovieCard
+                          movies={movies}
                           movie={movie}
                           key={movie.id}
                           user={user}
                           token={token}
+                          setUser={setUser}
                         />
                       ))}
                     </Col>
