@@ -13,7 +13,6 @@ export const LoginView = ({ onLoggedIn }) => {
 
   const handleEvent = (e) => {
     e.preventDefault();
-    console.log(e.target);
     const data = {
       Username: username,
       Password: password,
@@ -28,7 +27,6 @@ export const LoginView = ({ onLoggedIn }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Response: ', data);
         if (data.user) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('user', JSON.stringify(data.user));
