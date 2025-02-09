@@ -1,5 +1,5 @@
 import './profile-view.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MovieCard } from '../movie-card/movie-card';
 import { Modal, Col } from 'react-bootstrap';
 import moment from 'moment-timezone';
@@ -13,9 +13,11 @@ export const ProfileView = ({ user, movie, token, setUser, onLoggedOut }) => {
   const [inputUserName, setUserName] = useState(user.Username);
   const [inputBirthday, setBirthday] = useState(user.birthday);
   const [inputEmail, setEmail] = useState(user.email);
-
+  const [inputPassword, setPassword] = useState('');
   //Modal Control States
+
   const [show, setShow] = useState('');
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -34,6 +36,7 @@ export const ProfileView = ({ user, movie, token, setUser, onLoggedOut }) => {
       Username: inputUserName,
       email: inputEmail,
       birthday: inputBirthday,
+      Password: inputPassword,
     }),
   };
 
@@ -43,15 +46,12 @@ export const ProfileView = ({ user, movie, token, setUser, onLoggedOut }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setUser(data);
         localStorage.setItem('user', JSON.stringify(data));
         handleClose();
       })
       .catch((e) => {
-        console.log(e);
         alert(`Error updating user info: ${e.message}`);
-        console.log(user.Username);
       });
   };
   // delete user account
@@ -68,9 +68,7 @@ export const ProfileView = ({ user, movie, token, setUser, onLoggedOut }) => {
     })
       .then(() => alert('Account Deleted'))
       .catch((e) => {
-        console.log(e);
         alert(`Error deleting user info: ${e.message}`);
-        console.log(user.Username);
       });
   };
   return (
@@ -88,13 +86,19 @@ export const ProfileView = ({ user, movie, token, setUser, onLoggedOut }) => {
             Birthday:
             {formatDate}
           </Card.Text>
-
-          {userMovie.map((movie) => (
-            <MovieCard
-              movie={movie}
-              key={movie.id}
-            />
-          ))}
+          <Col
+            className='h-100 w-100 d-flex flex-row flex-{grow|shrink}-1 flex-wrap overflow-auto 
+          align-self-center justify-content-center'>
+            {userMovie.map((movie) => (
+              <MovieCard
+                movie={movie}
+                key={movie.id}
+                user={user}
+                token={token}
+                setUser={setUser}
+              />
+            ))}
+          </Col>
         </Card.Body>
       </Card>
       <Modal
@@ -106,30 +110,48 @@ export const ProfileView = ({ user, movie, token, setUser, onLoggedOut }) => {
             <Modal.Title>Update Info</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <input
-              label='Username'
-              type='text'
-              value={inputUserName}
-              onChange={(e) => {
-                setUserName(e.target.value);
-              }}
-            />
-            <input
-              type='date'
-              value={inputBirthday}
-              onChange={(e) => {
-                const timeZone = moment.tz.guess();
-                const formatDate = moment(e.target.value).tz(timeZone).format('YYYY-MM-DD');
-                setBirthday(formatDate);
-              }}
-            />
-            <input
-              type='text'
-              value={inputEmail}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
+            <p>
+              <label className='p-1'>Username:</label>
+              <input
+                label='Username'
+                type='text'
+                value={inputUserName}
+                onChange={(e) => {
+                  setUserName(e.target.value);
+                }}
+              />
+            </p>
+            <p>
+              <label className='p-1'>Birthday:</label>
+              <input
+                type='date'
+                value={formatDate}
+                onChange={(e) => {
+                  const timeZone = moment.tz.guess();
+                  const formatDate = moment(e.target.value).tz(timeZone).format('YYYY-MM-DD');
+                  setBirthday(formatDate);
+                }}
+              />
+            </p>
+            <p>
+              <label className='p-1'>Email:</label>
+              <input
+                type='text'
+                value={inputEmail}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </p>
+            <p>
+              <label className='p-1'>Password: </label>
+              <input
+                type='text'
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </p>
           </Modal.Body>
           <Modal.Footer>
             <Button
