@@ -9,7 +9,7 @@
  You can view your profile by going to the navigation bar and selecting "Profile". In the profile view, the list of all the selected movies and the login info will be present. You can update this information using the button at the very top "Update Info".
 
 ---
-## h2 Leveraged Technology
+## Leveraged Technology
 
 |Technology| |
 |----------|---------|
@@ -40,6 +40,11 @@ https://appflixcf-d4726ef19667.herokuapp.com/documentation.html
 - center the movie-view cards completely
 - dropdown button instead of individual genre buttons
 - lag in search field--needs two inputted characters.
+<br>
+<br>
 
+###  Takeaways from this project
 
+This was my first experience using React in a project. It was a challenging process using a library like React. Using hooks, creating components, imports, dependancies really shook me from the previous vanilla JS projects
+and made it feel like I was in the weeds of coding. Looking back on this project, I am proud about the tenacity it takes to look at the scope of development, all the syntax and idiosyncracies between languages, and make things dynamically appear on a website.
 
